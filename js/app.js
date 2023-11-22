@@ -10,6 +10,7 @@ createApp({
     data(){
         return{
 
+            activeConversation: 0,
             myAvatar:{
                 nome: 'Mario Rossi',
                 img:"./img/avatar_io.jpg"

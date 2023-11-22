@@ -7,6 +7,8 @@
 
 body{
     background-color:antiquewhite;
+    padding: 1rem;
+    position: relative;
 
 }
 
@@ -15,15 +17,17 @@ body{
     background-color: teal;
     height: 10vh;
     width: 100%;
-
-
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
 
 }
 
 #container{
 
     display: flex;
-    margin: -5rem auto;
+    margin: 0 auto;
     width: 70%;
     height: 80vh;
     background-color: lightgrey;
@@ -36,7 +40,8 @@ body{
 #leftColumn{
     height: 100%;
     width: 35%;
-    border: solid red 1px
+    border: solid red 1px;
+
 
 }
 
@@ -68,4 +73,47 @@ body{
     
 
     
+}
+
+#contactList{
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+}
+
+#activeContact{
+    height: 4rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: aliceblue;
+    
+
+}
+
+
+#activeMessages ul{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    list-style-type: none;
+
+}
+
+.sent{
+    color: gray;
+    align-self: end;
+    background-color: aquamarine;
+    width: 60%;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.received{
+    color: white;
+    align-self: start;
+    background-color: gray;
+    width: 60%;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
 }

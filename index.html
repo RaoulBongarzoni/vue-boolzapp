@@ -25,25 +25,43 @@
         <div id="container">
             <!-- colonna con lista contatti -->
             <div id="leftColumn">
+                <!-- il mio utente -->
                 <div id="myAvatar">
                     <img   class="media_img_avatar" alt="io" :src="myAvatar.img"  >
                     <span>{{myAvatar.nome}}</span>
                 </div>
+                <!-- lista dei contatti -->
                 <div id="contactList">
                     <ul>
-                        <li class="contact_card" v-for="(contact, i) in contacts" >
+                        <li class="contact_card" v-for="(contact, i) in contacts" @click="activeConversation = i">
                             <img class="media_img_avatar" :src="contact.avatar" :alt="contact.name">
                             <span>{{contact.name}}</span>
                             <p>last message received</p>
                         </li>
                     </ul>
-                </div>
-                
-                
-                
+                </div> 
             </div>
             
-            <div id="rightColumn"></div>
+            <div id="rightColumn">
+                <div id="activeContact">
+                    <img   class="media_img_avatar" alt="actual" :src="contacts[activeConversation].avatar"  >
+                    <span>{{contacts[activeConversation].name}}</span>
+                </div>
+                <div id="activeMessages">
+                    <ul>
+                        <li v-for="(message,i) in contacts[activeConversation].messages" :class="contacts[activeConversation].messages[i].status">
+                            {{contacts[activeConversation].messages[i].message}}
+                            <p>
+                                {{contacts[activeConversation].messages[i].date}}
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                 
+            </div>
             
             
             
@@ -51,7 +69,6 @@
             
             
             
-            <!-- il mio utente -->
             <!-- colonna mesaggi correnti -->
             <!-- il contatto corrente -->
             <!-- messaggi correnti -->
