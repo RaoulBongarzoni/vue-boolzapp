@@ -6,15 +6,16 @@
 }
 
 body{
-    background-color:antiquewhite;
+    background-color:#dbdbd2;
     padding: 1rem;
     position: relative;
+    font-family: sans-serif;
 
 }
 
 
 #background{
-    background-color: teal;
+    background-color: #009688;
     height: 10vh;
     width: 100%;
     position: absolute;
@@ -30,7 +31,7 @@ body{
     margin: 0 auto;
     width: 70%;
     height: 80vh;
-    background-color: lightgrey;
+    background-color: white;
     justify-content: center;
     align-items: stretch;
 
@@ -40,8 +41,7 @@ body{
 #leftColumn{
     height: 100%;
     width: 35%;
-    border: solid red 1px;
-
+    border-right: solid 1px lightgray;
 
 }
 
@@ -49,30 +49,69 @@ body{
 #rightColumn{
     height: 100%;
     width: 65%;
-    border: solid blue 1px
+
 }
 
-#myAvatar{
+.contactBar{
     height: 4rem;
     width: 100%;
-    padding: 1rem;
-    background-color: aliceblue;
+
+    background-color: #f3eeea;
+    display: flex;
+    justify-content: space-between;
     
 
 }
 
+.contactinfo{
+    height: 4rem;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+}
+.contactinfo span{
+    align-self: center;
+
+}
+
+
+.pulsantiera{
+    color: gray;
+    padding: 0.5rem;
+    display: flex;
+}
+.pulsantiera i{
+    margin: 0.5rem;
+    align-self: center;
+
+
+}
 .media_img_avatar{
     height: 100%;
     border-radius: 50%;
+    
 }
 
 .contact_card{
     height: 4rem;
     width: 100%;
-    padding: 1rem;
-    
+    padding: 0.5rem;
+    display: flex;
+    background-color: white;
+    border-top: 0.5px solid lightgray;
+}
 
-    
+.contact_card:hover{
+    background-color: lightgrey;
+}
+
+.textInfo{
+    margin-left: 1rem;
+}
+.textInfo p{
+    font-size: small;
+    color: gray;
+
 }
 
 #contactList{
@@ -80,13 +119,30 @@ body{
     overflow-y: auto;
 }
 
+.inputBar{
+    width: 100%;
+    border: 2px solid lightgrey;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    display:flex;
+    border-radius: 5px;
 
+}
+
+.inputBar i{
+    padding: 0.5rem 0;
+}
+.inputBar input{
+    border-style: none;
+    padding: 0.5rem;
+}
 
 #activeContact{
     height: 4rem;
     width: 100%;
-    padding: 1rem;
-    background-color: aliceblue;
+
+    background-color: #f3eeea;
+    
     
 
 }
@@ -94,6 +150,7 @@ body{
 #activeMessages{
     height: calc(100% - 7rem);
     overflow-y: auto;
+    background: url(../img/mine.jpg) ;
 
 }
 
@@ -108,7 +165,7 @@ body{
 .sent{
     color: gray;
     align-self: end;
-    background-color: aquamarine;
+    background-color: #d5f9ba;
     width: 60%;
     margin: 1rem;
     padding: 1rem;
@@ -116,9 +173,9 @@ body{
 }
 
 .received{
-    color: white;
+    color: gray;
     align-self: start;
-    background-color: gray;
+    background-color: #ffffff;
     width: 60%;
     margin: 1rem;
     padding: 1rem;
@@ -127,6 +184,19 @@ body{
 
 #newMessage{
     height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    background-color: #f3eeea;
+}
 
 
+#messageInput{
+    width: 80%;
+    border-style: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 0 1rem;
 }

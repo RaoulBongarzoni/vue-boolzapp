@@ -10,6 +10,8 @@
     <!-- link css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- bootsrap -->
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
 </head>
@@ -26,30 +28,52 @@
             <!-- colonna con lista contatti -->
             <div id="leftColumn">
                 <!-- il mio utente -->
-                <div id="myAvatar">
-                    <img   class="media_img_avatar" alt="io" :src="myAvatar.img"  >
-                    <span>{{myAvatar.nome}}</span>
+                <div id="myAvatar" class="contactBar">
+                    <div class="contactinfo">
+                        <img   class="media_img_avatar" alt="io" :src="myAvatar.img"  >
+                        <span>{{myAvatar.nome}}</span>
+                    </div>
+                    <div class="pulsantiera">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-message"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+
+                    </div>
                 </div>
                 <!-- barra di ricerca -->
-                <div>
-                </div>
+
                 <!-- lista dei contatti -->
                 <div id="contactList">
-                    <input type="text" v-model="textToSearch" placeholder="cerca" @keyup="cerca">
+                    <div class="inputBar">
+
+                        <i class="fab fa-sistrix"></i>
+                        <input type="text" v-model="textToSearch" placeholder="cerca" @keyup="cerca">
+                    </div>
                     <ul>
                         <li class="contact_card" v-for="(contact, i) in contacts" v-show="contact.visible" @click="activeConversation = i">
                             <img class="media_img_avatar" :src="contact.avatar" :alt="contact.name">
-                            <span>{{contact.name}}</span>
-                            <p>last message received</p>
+                            <div class="textInfo">
+                                <span>{{contact.name}}</span>
+                                <p>last message received</p>
+                            </div>
                         </li>
                     </ul>
                 </div> 
             </div>
             
             <div id="rightColumn">
-                <div id="activeContact">
-                    <img   class="media_img_avatar" alt="actual" :src="contacts[activeConversation].avatar"  >
-                    <span>{{contacts[activeConversation].name}}</span>
+                <div id="activeContact" class="contactBar">
+                    <div class="contactinfo">
+
+                        <img   class="media_img_avatar" alt="actual" :src="contacts[activeConversation].avatar"  >
+                        <span>{{contacts[activeConversation].name}}</span>
+                    </div>
+                    <div class="pulsantiera">
+                        <i class="fab fa-sistrix"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fas fa-ellipsis-v"></i>
+
+                    </div>
                 </div>
                 <div id="activeMessages">
                     <ul>
@@ -63,8 +87,14 @@
                     </ul>
                 </div>
                 <div id="newMessage">
-                    <input type="text" v-model="newMessage">
-                    <button @click="sendMessage()">invia</button>
+<!--                     <div class="inputBar"> -->
+                        <i class=" far fa-smile"></i>
+
+                        <input id="messageInput" type="text" v-model="newMessage" @keyup.enter="sendMessage()" placeholder="scrivi un messaggio">
+
+                        <i class="fas fa-microphone"></i>
+                        
+<!--                     </div> -->
                     
                 </div>
 
