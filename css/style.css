@@ -80,6 +80,8 @@ body{
     overflow-y: auto;
 }
 
+
+
 #activeContact{
     height: 4rem;
     width: 100%;
@@ -89,6 +91,11 @@ body{
 
 }
 
+#activeMessages{
+    height: calc(100% - 7rem);
+    overflow-y: auto;
+
+}
 
 #activeMessages ul{
     display: flex;
@@ -116,4 +123,10 @@ body{
     margin: 1rem;
     padding: 1rem;
     border-radius: 5px;
+}
+
+#newMessage{
+    height: 3rem;
+
+
 }

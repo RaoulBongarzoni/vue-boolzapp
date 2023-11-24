@@ -55,8 +55,13 @@
                                 {{contacts[activeConversation].messages[i].date}}
                             </p>
                         </li>
+                        
                     </ul>
-
+                </div>
+                <div id="newMessage">
+                    <input type="text" v-model.lazy="newMessage">
+                    <button @click="sendMessage()">invia</button>
+                    
                 </div>
 
 

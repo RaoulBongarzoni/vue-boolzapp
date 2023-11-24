@@ -11,6 +11,8 @@ createApp({
         return{
 
             activeConversation: 0,
+
+            newMessage : "",
             myAvatar:{
                 nome: 'Mario Rossi',
                 img:"./img/avatar_io.jpg"
@@ -186,6 +188,28 @@ createApp({
         }
     },
     methods:{
+        sendMessage: function (){
+            let newmessage = {date: "12", message: this.newMessage, status: 'sent'};
+            this.contacts[this.activeConversation].messages.push(newmessage);
+            let response = {date: "12", message: 'ok', status: 'received'};
+            setTimeout(() => {
+                this.contacts[this.activeConversation].messages.push(response);
+
+                
+            }, 3000);
+            this.newMessage=""; 
+
+
+
+            
+
+        },
+
+/*         autoResponse: function(){
+            let response = {date: "1233", message: 'ok', status: 'received'};
+            this.contacts[this.activeConversation].messages.push(response);
+
+        } */
         /* funzione che mi genera lista contatti */
         /* funzione che mi fa vedere tutti i messaggi in dinamica del contatto corrente */
     },
