@@ -11,6 +11,7 @@ createApp({
         return{
 
             activeConversation: 0,
+            textToSearch:'',
 
             newMessage : "",
             myAvatar:{
@@ -183,8 +184,7 @@ createApp({
                 }
             ]
             
-            /* contatto singolo */
-            /* [{nome, immagine, visibilità, messaggi scambiati:[{data,contenuto,inviato/ricevuto}]}] */
+
         }
     },
     methods:{
@@ -205,13 +205,31 @@ createApp({
 
         },
 
+        /* funzione cerca */
+        cerca: function(){  
+
+            let searchText= this.textToSearch.toLowerCase();
+            this.contacts.forEach(element => {
+                let thisElement=element.name.toLowerCase();
+                if(thisElement.includes(searchText)){
+
+                    element.visible=true
+                }else{
+                    element.visible=false
+                }
+            });
+
+
+
+
+        }
+
 /*         autoResponse: function(){
             let response = {date: "1233", message: 'ok', status: 'received'};
             this.contacts[this.activeConversation].messages.push(response);
 
         } */
-        /* funzione che mi genera lista contatti */
-        /* funzione che mi fa vedere tutti i messaggi in dinamica del contatto corrente */
+
     },
     mounted(){}
 

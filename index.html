@@ -30,10 +30,14 @@
                     <img   class="media_img_avatar" alt="io" :src="myAvatar.img"  >
                     <span>{{myAvatar.nome}}</span>
                 </div>
+                <!-- barra di ricerca -->
+                <div>
+                </div>
                 <!-- lista dei contatti -->
                 <div id="contactList">
+                    <input type="text" v-model="textToSearch" placeholder="cerca" @keyup="cerca">
                     <ul>
-                        <li class="contact_card" v-for="(contact, i) in contacts" @click="activeConversation = i">
+                        <li class="contact_card" v-for="(contact, i) in contacts" v-show="contact.visible" @click="activeConversation = i">
                             <img class="media_img_avatar" :src="contact.avatar" :alt="contact.name">
                             <span>{{contact.name}}</span>
                             <p>last message received</p>
@@ -59,7 +63,7 @@
                     </ul>
                 </div>
                 <div id="newMessage">
-                    <input type="text" v-model.lazy="newMessage">
+                    <input type="text" v-model="newMessage">
                     <button @click="sendMessage()">invia</button>
                     
                 </div>
