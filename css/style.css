@@ -151,6 +151,7 @@ body{
     height: calc(100% - 7rem);
     overflow-y: auto;
     background: url(../img/mine.jpg) ;
+    
 
 }
 
@@ -160,6 +161,9 @@ body{
     align-content: space-between;
     list-style-type: none;
 
+}
+#activeMessages li{
+    position: relative;
 }
 
 .sent{
@@ -199,4 +203,15 @@ body{
     border-radius: 10px;
     padding: 0.5rem;
     margin: 0 1rem;
+}
+
+
+#activeMessages p{
+    font-size: small;
+    color: lightgray;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0.2rem;
+
 }

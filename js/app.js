@@ -1,4 +1,5 @@
-const { createApp } = Vue
+const { createApp } = Vue;
+var DateTime = luxon.DateTime;
 
 
 
@@ -12,7 +13,7 @@ createApp({
 
             activeConversation: 0,
             textToSearch:'',
-
+            simpleOrario: [],
             newMessage : "",
             myAvatar:{
                 nome: 'Mario Rossi',
@@ -189,9 +190,13 @@ createApp({
     },
     methods:{
         sendMessage: function (){
-            let newmessage = {date: "12", message: this.newMessage, status: 'sent'};
+
+            let dt = DateTime.now().toLocaleString(DateTime.TIME_24_SIMPLE);
+            console.log(dt)
+            
+            let newmessage = {date: dt, message: this.newMessage, status: 'sent'};
             this.contacts[this.activeConversation].messages.push(newmessage);
-            let response = {date: "12", message: 'ok', status: 'received'};
+            let response = {date: dt, message: 'ok', status: 'received'};
             setTimeout(() => {
                 this.contacts[this.activeConversation].messages.push(response);
 
@@ -222,8 +227,19 @@ createApp({
 
 
 
-        }
+        },
 
+        //funzione che mi traduce l'orario in legibile
+
+        getOrario: function(i) {
+            this.simpleOrario=[];
+            this.contacts[this.activeConversation].messages.forEach(element => {
+                
+                let simpletime = element.date.slice(11,16);
+                this.simpleOrario.push(simpletime);
+            });
+            
+        }
 /*         autoResponse: function(){
             let response = {date: "1233", message: 'ok', status: 'received'};
             this.contacts[this.activeConversation].messages.push(response);

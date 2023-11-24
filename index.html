@@ -40,7 +40,7 @@
 
                     </div>
                 </div>
-                <!-- barra di ricerca -->
+
 
                 <!-- lista dei contatti -->
                 <div id="contactList">
@@ -77,10 +77,12 @@
                 </div>
                 <div id="activeMessages">
                     <ul>
-                        <li v-for="(message,i) in contacts[activeConversation].messages" :class="contacts[activeConversation].messages[i].status">
-                            {{contacts[activeConversation].messages[i].message}}
+                        <li  v-for="(message,i) in contacts[activeConversation].messages" v-on="getOrario(i)" :class="contacts[activeConversation].messages[i].status">
+                            <span>
+                                {{contacts[activeConversation].messages[i].message}}
+                            </span>
                             <p>
-                                {{contacts[activeConversation].messages[i].date}}
+                                {{simpleOrario[i]}}
                             </p>
                         </li>
                         
@@ -98,7 +100,7 @@
                     
                 </div>
 
-
+                
                  
             </div>
             
@@ -123,7 +125,7 @@
     
     
     
-    
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
