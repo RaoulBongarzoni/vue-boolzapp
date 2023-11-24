@@ -11,10 +11,20 @@ createApp({
     data(){
         return{
 
+            /* indice conversazione attiva */
+
             activeConversation: 0,
+
+            /* testo da cercare */
             textToSearch:'',
+
+            /* orario semplificato */
             simpleOrario: [],
+
+            /* nuovo messaggio  */
             newMessage : "",
+
+            /* il mio contatto */
             myAvatar:{
                 nome: 'Mario Rossi',
                 img:"./img/avatar_io.jpg"
@@ -188,20 +198,35 @@ createApp({
 
         }
     },
+
     methods:{
+
+        /* invio del messaggio */
         sendMessage: function (){
 
+
+            /* salvo la data di ora */
             let dt = DateTime.now().toLocaleString(DateTime.TIME_24_SIMPLE);
             console.log(dt)
-            
+            /* inizializzo nuovo messaggio */
             let newmessage = {date: dt, message: this.newMessage, status: 'sent'};
+            /* inserisco nell'array dei messaggi */
             this.contacts[this.activeConversation].messages.push(newmessage);
+
+            /* pusho l'orario attuale negli orari semplici */
+            this.simpleOrario.push(dt);
+
+            /* risposta automatica dopo 3 secondi */
             let response = {date: dt, message: 'ok', status: 'received'};
             setTimeout(() => {
                 this.contacts[this.activeConversation].messages.push(response);
+                this.simpleOrario.push(response.date)
 
                 
             }, 3000);
+
+            /* reinizializzo la variabile che dovrà contenere il nuovo messaggio */
+            console.log(this.simpleOrario);
             this.newMessage=""; 
 
 
@@ -213,7 +238,10 @@ createApp({
         /* funzione cerca */
         cerca: function(){  
 
+
+            /* cerca nei contatti (non case sensitive) */
             let searchText= this.textToSearch.toLowerCase();
+            /* se è vero rimane senno lo toglie */
             this.contacts.forEach(element => {
                 let thisElement=element.name.toLowerCase();
                 if(thisElement.includes(searchText)){
@@ -231,23 +259,21 @@ createApp({
 
         //funzione che mi traduce l'orario in legibile
 
-        getOrario: function(i) {
-            this.simpleOrario=[];
+        getOrario: function() {
+            
+            this.simpleOrario=[]
             this.contacts[this.activeConversation].messages.forEach(element => {
                 
                 let simpletime = element.date.slice(11,16);
                 this.simpleOrario.push(simpletime);
             });
             
-        }
-/*         autoResponse: function(){
-            let response = {date: "1233", message: 'ok', status: 'received'};
-            this.contacts[this.activeConversation].messages.push(response);
+        },
 
-        } */
+    
 
-    },
-    mounted(){}
+    }
+
 
 
 

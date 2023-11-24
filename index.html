@@ -23,16 +23,19 @@
     
     
     <div id="app">
-        <!-- finestra principale -->
+        <!-- finestra app -->
         <div id="container">
+
             <!-- colonna con lista contatti -->
             <div id="leftColumn">
+
                 <!-- il mio utente -->
-                <div id="myAvatar" class="contactBar">
+                <div class="contactBar">
                     <div class="contactinfo">
                         <img   class="media_img_avatar" alt="io" :src="myAvatar.img"  >
                         <span>{{myAvatar.nome}}</span>
                     </div>
+                    <!-- icone -->
                     <div class="pulsantiera">
                         <i class="fas fa-circle-notch"></i>
                         <i class="fas fa-message"></i>
@@ -44,13 +47,19 @@
 
                 <!-- lista dei contatti -->
                 <div id="contactList">
+
+
+
+                    <!-- barra ricerca contatti -->
                     <div class="inputBar">
 
                         <i class="fab fa-sistrix"></i>
                         <input type="text" v-model="textToSearch" placeholder="cerca" @keyup="cerca">
                     </div>
+
+                    <!-- lista contatti visualizzati -->
                     <ul>
-                        <li class="contact_card" v-for="(contact, i) in contacts" v-show="contact.visible" @click="activeConversation = i">
+                        <li class="contact_card" v-for="(contact, i) in contacts" v-show="contact.visible" @click="activeConversation = i" v-on:click="getOrario()">
                             <img class="media_img_avatar" :src="contact.avatar" :alt="contact.name">
                             <div class="textInfo">
                                 <span>{{contact.name}}</span>
@@ -58,10 +67,17 @@
                             </div>
                         </li>
                     </ul>
+                    <!--  -->
                 </div> 
+                <!--  -->
             </div>
+            <!-- ***************** -->
             
+
+            <!-- finestra principale -->
             <div id="rightColumn">
+
+                <!-- contatto attivo -->
                 <div id="activeContact" class="contactBar">
                     <div class="contactinfo">
 
@@ -75,50 +91,41 @@
 
                     </div>
                 </div>
+                <!-- errore: non riesco a visualizzare l'orario dei messaggi al primo caricamento pagina -->
+                <!-- messaggi attivi -->
                 <div id="activeMessages">
                     <ul>
-                        <li  v-for="(message,i) in contacts[activeConversation].messages" v-on="getOrario(i)" :class="contacts[activeConversation].messages[i].status">
+                        <li  v-for="(message,i) in contacts[activeConversation].messages" :class="contacts[activeConversation].messages[i].status">
                             <span>
                                 {{contacts[activeConversation].messages[i].message}}
                             </span>
-                            <p>
+                            <p v-if="simpleOrario[i]!=''" >
                                 {{simpleOrario[i]}}
+                            </p>
+                            <p v-else>
+                                {{contacts[activeConversation].messages[i].message.date}}
                             </p>
                         </li>
                         
                     </ul>
                 </div>
+                <!-- inserimento nuovo messaggio + risposta automatica -->
                 <div id="newMessage">
-<!--                     <div class="inputBar"> -->
+
                         <i class=" far fa-smile"></i>
 
+                        <!-- input -->
                         <input id="messageInput" type="text" v-model="newMessage" @keyup.enter="sendMessage()" placeholder="scrivi un messaggio">
 
                         <i class="fas fa-microphone"></i>
                         
-<!--                     </div> -->
+
                     
                 </div>
 
                 
                  
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            <!-- colonna mesaggi correnti -->
-            <!-- il contatto corrente -->
-            <!-- messaggi correnti -->
-            <!-- IN BASE AL inviato o ricevuto il messaggio si attacca a destra o a sinistra -->
-            
-            
-            
-            
-            
+            </div>    
             
         </div>
     </div>
